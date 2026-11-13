@@ -286,13 +286,30 @@ try{
   assert.throws(()=>evaluate('const invalidWeight=clone(data);invalidWeight.softConstraints[0].importance=101;validateImport(invalidWeight)'));
   document.querySelector('[data-action="add"][data-key="hardConstraints"]').click();
   const constraintForm=document.querySelector('#edit-form');
-  const staffOptions=[...constraintForm.elements.staffEmails.options];
+  const staffPicker=constraintForm.querySelector('.constraint-staff-picker');
+  const independent=staffPicker.querySelector('input[type="checkbox"]');
+  const staffSelect=staffPicker.querySelector('select');
+  const addStaff=staffPicker.querySelector('.constraint-staff-add button');
+  assert.equal(independent.checked,true);
+  assert.equal(staffPicker.querySelector('.constraint-staff-controls').hidden,true);
+  independent.click();
+  assert.equal(staffSelect.checkValidity(),false);
+  const staffOptions=[...staffSelect.options];
   const staffSelected=[
     staffOptions.find(option=>option.textContent.includes(' · Instructor · ')),
     staffOptions.find(option=>option.textContent.includes(' · Teaching Assistant · ')),
     staffOptions.find(option=>option.textContent.includes(' · Learning Assistant · '))
   ];
-  staffSelected.forEach(option=>{option.selected=true;});
+  const addStaffMember=email=>{
+    staffSelect.value=email;
+    staffSelect.dispatchEvent(new window.Event('change',{bubbles:true}));
+    addStaff.click();
+  };
+  staffSelected.forEach(option=>addStaffMember(option.value));
+  staffPicker.querySelector('[data-remove-staff]').click();
+  assert.equal(staffPicker.querySelectorAll('[data-remove-staff]').length,2);
+  addStaffMember(staffSelected[0].value);
+  assert.equal(staffSelect.checkValidity(),true);
   constraintForm.elements.name.value='Linked staff test';
   constraintForm.elements.scope.value='Teaching team';
   constraintForm.elements.requirement.value='Review this requirement with the teaching team.';
@@ -316,7 +333,13 @@ try{
   assert.equal(linkedRuleButton.textContent,'Linked staff test');
   linkedRuleButton.click();
   assert.deepEqual([...constraintForm.elements.staffEmails.selectedOptions].map(option=>option.value).sort(),linkedEmails);
-  document.querySelector('#cancel').click();
+  const editIndependent=constraintForm.querySelector('.constraint-independent input');
+  assert.equal(editIndependent.checked,false);
+  editIndependent.click();
+  constraintForm.querySelector('[type="submit"]').click();
+  assert.equal(evaluate('data.softConstraints.at(-1).staffEmails.length'),0);
+  assert.equal(document.querySelector(`[data-action="edit"][data-key="softConstraints"][data-index="${softCount}"]`),null);
+  document.querySelector('#undo').click();
   document.querySelector('#undo').click();
   document.querySelector('#undo').click();
   assert.equal(evaluate('JSON.stringify([data.hardConstraints,data.softConstraints])'),originalRules);

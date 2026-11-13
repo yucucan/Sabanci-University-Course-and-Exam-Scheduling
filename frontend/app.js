@@ -90,7 +90,10 @@ function render(){const [page='dashboard',action,id]=(location.hash.slice(1)||'d
  main.innerHTML=heading('General','Configure the university, teaching spaces, and academic timetable.')+`<div class="stats">${['campuses','instructors','classrooms','courses'].map(k=>`<a class="stat" href="#${k==='campuses'?'general':k}">${titles[k]}<strong>${data[k].length}</strong></a>`).join('')}</div>`+['campuses','buildings','faculties','departments','classroomTypes','courseTypes','timeStructure'].map((k,i)=>panel(titles[k],table(k),i===0)).join('')+panel('Minimum Travel Time',['campusTravel','buildingTravel','campusBuildingTravel'].map(k=>panel(titles[k],table(k),true)).join(''));}
 function readForm(form,key){
  return Object.fromEntries(schemas[key].map(spec=>{
-  if(spec.multiple)return [spec.key,Array.from(form.elements[spec.key].selectedOptions,option=>option.value)];
+  if(spec.multiple){
+   const select=form.elements[spec.key];
+   return [spec.key,select.disabled?[]:Array.from(select.selectedOptions,option=>option.value)];
+  }
   const value=form.elements[spec.key]?.value??'';
   return [spec.key,spec.type==='number'&&value!==''?Number(value):value.trim()];
  }));

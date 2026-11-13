@@ -19,7 +19,16 @@
 .constraint-card p { line-height:1.7; margin-bottom:22px; overflow-wrap:anywhere; }
 .constraint-staff { margin-bottom:18px; overflow-wrap:anywhere; }
 .constraint-staff ul { margin:6px 0 0; padding-left:20px; }
-.form-grid label:has(select[multiple]) { grid-column:1/-1; }
+.constraint-staff-picker { grid-column:1/-1; min-width:0; margin:0; padding:14px; border:1px solid var(--border); border-radius:6px; }
+.constraint-staff-picker legend { padding:0 5px; font-weight:bold; }
+.constraint-independent { display:flex; align-items:center; gap:8px; width:fit-content; }
+.constraint-independent input { width:auto; }
+.constraint-staff-controls { display:grid; gap:10px; margin-top:12px; }
+.constraint-staff-members { display:grid; gap:6px; margin:0; padding:0; list-style:none; }
+.constraint-staff-members li { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 8px; background:#eef4f8; border-radius:4px; }
+.constraint-staff-members span { overflow-wrap:anywhere; }
+.constraint-staff-add { display:flex; align-items:end; gap:8px; }
+.constraint-staff-add label { flex:1; min-width:0; }
 .constraint-card-bottom { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:auto; padding-top:14px; border-top:1px solid var(--border); }
 .constraint-card-bottom small { color:#526a7a; line-height:1.5; overflow-wrap:anywhere; }
 .constraint-card .actions { flex-wrap:nowrap; }

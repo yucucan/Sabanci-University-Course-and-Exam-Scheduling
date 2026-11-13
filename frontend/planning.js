@@ -90,6 +90,72 @@ function normalizePlanningData(workspace) {
 normalizePlanningData(data);
 normalizePlanningData(window.EXAMPLE_DATA);
 
+const editBeforeConstraintStaff=edit;
+edit=function(key,index,parent){
+  editBeforeConstraintStaff(key,index,parent);
+  if(!['hardConstraints','softConstraints'].includes(key))return;
+  const selection=document.querySelector('#edit-form [name="staffEmails"]');
+  const field=document.createElement('fieldset');
+  field.className='constraint-staff-picker';
+  field.innerHTML=`<legend>Teaching staff</legend>
+    <label class="constraint-independent"><input type="checkbox"> Independent of teaching staff</label>
+    <div class="constraint-staff-controls">
+      <ul class="constraint-staff-members" aria-label="Linked teaching staff"></ul>
+      <div class="constraint-staff-add">
+        <label>Add teaching staff<select aria-describedby="constraint-staff-picker-help"></select></label>
+        <button type="button">Add</button>
+      </div>
+      <small id="constraint-staff-picker-help">Choose a staff member and select Add.</small>
+    </div>`;
+  const storageLabel=selection.closest('label');
+  storageLabel.hidden=true;
+  storageLabel.after(field);
+  const independent=field.querySelector('input');
+  const controls=field.querySelector('.constraint-staff-controls');
+  const members=field.querySelector('ul');
+  const picker=field.querySelector('select');
+  const add=field.querySelector('.constraint-staff-add button');
+  independent.checked=selection.selectedOptions.length===0;
+
+  function updateStaffPicker(){
+    controls.hidden=independent.checked;
+    selection.disabled=independent.checked;
+    const selected=Array.from(selection.selectedOptions);
+    const available=Array.from(selection.options).filter(option=>!option.selected);
+    picker.replaceChildren(new Option(available.length?'Choose a staff member':'No more staff to add',''),
+      ...available.map(option=>new Option(option.textContent,option.value)));
+    add.disabled=!picker.value;
+    picker.setCustomValidity(!independent.checked&&!selected.length
+      ?'Add a staff member or select Independent of teaching staff.':'');
+    members.hidden=selected.length===0;
+    members.innerHTML=selected.map(option=>`<li><span>${esc(option.textContent)}</span>
+      <button type="button" data-remove-staff="${esc(option.value)}" aria-label="Remove ${esc(option.textContent)}">Remove</button></li>`).join('');
+  }
+
+  independent.onchange=()=>{
+    updateStaffPicker();
+    if(!independent.checked)picker.focus();
+  };
+  picker.onchange=()=>{add.disabled=!picker.value;};
+  add.onclick=()=>{
+    const option=Array.from(selection.options).find(option=>option.value===picker.value);
+    if(!option)return;
+    option.selected=true;
+    updateStaffPicker();
+    picker.focus();
+  };
+  members.onclick=event=>{
+    const button=event.target.closest('[data-remove-staff]');
+    if(!button)return;
+    const option=Array.from(selection.options).find(option=>option.value===button.dataset.removeStaff);
+    if(!option)return;
+    option.selected=false;
+    updateStaffPicker();
+    picker.focus();
+  };
+  updateStaffPicker();
+};
+
 const validateBeforePlanning=validate;
 validate=function(record,key,...args){
   const error=validateBeforePlanning(record,key,...args);
