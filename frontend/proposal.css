@@ -1,0 +1,108 @@
+/* Defterdar: calm university planning proposal. Existing class-card styling is retained. */
+[hidden] { display:none !important; }
+.brand { gap:6px; }
+.brand img { width:46px; height:46px; }
+.brand strong { font-size:25px; letter-spacing:-.8px; color:#fff; }
+.brand span { letter-spacing:.3px; font-size:12px; }
+.sidebar-bottom a { font-size:11px; line-height:1.6; color:var(--ice); }
+.proposal-welcome { display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:center; padding:42px; }
+.proposal-welcome h2 { font-size:36px; letter-spacing:-1px; line-height:1.16; margin:20px 0; }
+.proposal-welcome p { max-width:650px; line-height:1.8; }
+.proposal-notebook { padding:28px 24px; border:1px solid #bbe1fa4d; border-radius:10px; background:#ffffff0b; transform:rotate(2deg); box-shadow:0 12px 30px #0002; }
+.proposal-notebook > span { font-size:10px; letter-spacing:2px; color:var(--ice); }
+.proposal-notebook > div { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:20px 0; }
+.proposal-notebook b { font-size:10px; color:var(--ice); text-align:center; padding:5px; }
+.proposal-notebook i { height:28px; background:#ffffff12; border:1px solid #ffffff15; border-radius:3px; }
+.proposal-notebook i.filled { background:var(--ice); }
+.proposal-feature-links { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); }
+.proposal-feature-links > a { padding:25px; border-right:1px solid var(--border); }
+.proposal-feature-links > a:last-child { border:0; }
+.proposal-feature-links > a:hover { background:#f0f7fc; }
+.proposal-feature-links span,.guide-number { font-size:11px; color:var(--blue); font-weight:bold; letter-spacing:1px; }
+.proposal-feature-links h3 { color:var(--ink); margin:16px 0 9px; font-size:17px; }
+.proposal-feature-links p { font-size:12px; line-height:1.8; margin:0; }
+.view-controls { margin:-3px 0 22px; }
+.view-control-buttons { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.view-control-buttons .muted { font-size:11px; }
+.view-control-buttons button[aria-expanded=true] { background:var(--navy); border-color:var(--navy); color:white; }
+#view-filter-panel:not([hidden]),.sort-panel:not([hidden]) { margin-top:15px; padding:18px; background:#edf5fb; border:1px solid #ccdfec; border-radius:7px; }
+#view-filter-panel .panel { box-shadow:none; border:0; background:transparent; margin:0; }
+#view-filter-panel .panel-content { padding:9px 0; }
+#view-filter-panel .room-search { margin:10px 0 0; max-width:500px; }
+.sort-panel { display:flex; align-items:end; gap:20px; flex-wrap:wrap; }
+.sort-panel label { min-width:260px; }
+.sort-panel small { color:#526a7a; padding-bottom:10px; }
+.table-filter-panel { padding:12px 0; display:flex; gap:15px; flex-wrap:wrap; }
+.table-filter-panel .search { max-width:480px; }
+.table-filter-panel label { min-width:180px; }
+.proposal-calendar-scroll { overflow-x:auto; padding:0 16px 18px; }
+.proposal-calendar { display:grid; grid-template-columns:76px repeat(var(--display-days),minmax(190px,1fr)); min-width:calc(76px + var(--display-days) * 190px); }
+.proposal-calendar .room-day-heading { background:#e0edf7; padding:18px 8px; font-size:13px; border-right:1px solid #c9dce9; }
+.proposal-calendar .room-day-heading small { display:block; font-size:9px; margin:5px 0 0; color:#526a7a; font-weight:normal; }
+.proposal-time-axis { position:relative; background:#f0f5fa; border-right:1px solid var(--border); }
+.proposal-time-axis > span { position:absolute; left:0; right:0; padding:13px 10px; font-size:12px; color:var(--navy); font-weight:bold; border-top:1px solid var(--border); }
+.proposal-time-axis small { display:block; font-weight:normal; font-size:9px; margin-top:5px; color:#697d8d; }
+.proposal-day-track { position:relative; border-right:1px solid var(--border); }
+.proposal-empty-slot { position:absolute; left:0; right:0; border-top:1px solid #ccdce7; background:#f9fcfe; }
+.proposal-empty-slot:nth-child(even) { background:#eef4f9; }
+.proposal-event { position:absolute; z-index:2; padding:3px 0; min-height:30px; }
+.proposal-event .session-card { height:100%; min-height:0; box-shadow:0 2px 5px #143b5712; gap:5px; margin:0; padding:12px; overflow:auto; }
+.proposal-event .session-card > span:not(.session-time) { font-size:11px; }
+.proposal-event .session-card small { font-size:10px; line-height:1.4; }
+.proposal-event.has-overlap .session-card { outline:2px dashed var(--ink); outline-offset:-2px; }
+.proposal-calendar .unavailable-block { inset-inline:0; }
+.weekend-switch { display:flex; align-items:center; gap:8px; font-weight:normal; }
+.weekend-switch input { width:auto; }
+.importance-editor { grid-template-columns:auto 85px; align-items:center; padding:12px; margin-bottom:18px; background:#eef5fb; border-radius:5px; }
+.importance-editor small { grid-column:1/-1; font-size:10px; font-weight:normal; color:#526a7a; }
+.importance-editor input { padding:8px; }
+.weight-numbers { display:grid; grid-template-columns:repeat(2,minmax(0,180px)); gap:15px; }
+.weight-control { display:grid; gap:12px; }
+.course-schedule-hint { line-height:1.7; color:var(--navy); padding:14px 18px; border:1px solid var(--border); border-radius:6px; background:#edf5fb; margin:0 0 20px; }
+.course-schedule-switch { display:inline-flex; align-items:center; gap:9px; min-width:85px; color:#526a7a; white-space:nowrap; }
+.data-table[data-key="courses"] th:last-child,
+.data-table[data-key="courses"] td:last-child { position:sticky; right:0; background:#fff; box-shadow:-4px 0 6px -4px #94a3ae; }
+.data-table[data-key="courses"] th:last-child { z-index:1; background:#f6f8fa; }
+.data-table[data-key="courses"] td:last-child .actions { flex-wrap:nowrap; width:max-content; }
+.switch-track { position:relative; width:32px; height:18px; background:#c1cdd6; border-radius:12px; flex-shrink:0; }
+.switch-track::after { content:''; position:absolute; width:12px; height:12px; top:3px; left:3px; border-radius:50%; background:white; }
+.course-schedule-switch.is-on { color:var(--navy); }
+.course-schedule-switch.is-on .switch-track { background:var(--navy); }
+.course-schedule-switch.is-on .switch-track::after { left:17px; }
+.course-excluded td { background:#f7f9fb; }
+.weight-numbers input { padding:10px; }
+.guide-intro h2 { font-size:27px; letter-spacing:-.5px; }
+.guide-intro p { line-height:1.9; max-width:900px; }
+.guide-start { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+.guide-function h2 { margin:14px 0 9px; }
+.guide-function h3 { font-size:13px; color:var(--navy); margin-bottom:15px; }
+.guide-function p { font-size:13px; line-height:1.9; }
+.guide-definitions { display:grid; grid-template-columns:170px 1fr; column-gap:24px; margin:0; }
+.guide-definitions dt,.guide-definitions dd { padding:16px 0; border-bottom:1px solid var(--border); margin:0; line-height:1.8; }
+.guide-definitions dt { font-weight:bold; color:var(--navy); }
+.dashboard-columns p { line-height:1.8; }
+.feedback-entries { list-style:none; margin:0; padding:0; overflow-wrap:anywhere; }
+.feedback-entries li + li { border-top:1px solid var(--border); margin-top:16px; padding-top:16px; }
+.feedback-entries h3 { margin:0; }
+.feedback-entries p { margin:6px 0; white-space:pre-wrap; }
+.feedback-details { grid-column:1/-1; }
+.feedback-details small { display:block; margin-top:6px; }
+#feedback-status:empty { margin:0; }
+.exam-findings { color:var(--ink); margin:0; min-width:180px; padding-left:18px; }
+.exam-form-hint,.section-form-hint { grid-column:1/-1; margin:0; }
+.constraint-card .actions { flex-wrap:wrap; }
+.constraint-card-bottom { flex-wrap:wrap; }
+.welcome-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.welcome-actions .welcome-secondary { margin-left:0; background:transparent; }
+#spreadsheet-dialog { width:min(1040px,95vw); }
+.spreadsheet-modal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:16px; }
+.spreadsheet-card { padding:20px; border:1px solid var(--border); border-top:3px solid var(--navy); border-radius:8px; background:#fafcfe; display:flex; flex-direction:column; gap:10px; }
+.spreadsheet-card h3 { margin:0; font-size:17px; color:var(--ink); }
+.spreadsheet-card p { margin:0; font-size:12px; line-height:1.6; }
+.spreadsheet-card input { max-width:100%; }
+#csv-preview:not(:empty) { margin-top:20px; }
+#csv-preview .table-wrap { max-height:280px; overflow:auto; margin:12px 0; }
+@media(max-width:1250px) { .proposal-welcome { grid-template-columns:1.6fr 1fr; gap:25px; padding:30px; } .proposal-welcome h2 { font-size:30px; } .proposal-feature-links { grid-template-columns:repeat(2,minmax(0,1fr)); } .proposal-feature-links > a { border-bottom:1px solid var(--border); } }
+@media(max-width:800px) { .proposal-welcome { grid-template-columns:1fr; } .proposal-notebook { display:none; } .guide-definitions { grid-template-columns:1fr; } .guide-definitions dt { border:0; padding-bottom:0; } .spreadsheet-modal-grid { grid-template-columns:1fr; } }
+@media(max-width:500px) { .proposal-feature-links { grid-template-columns:1fr; } .proposal-welcome { padding:24px; } .proposal-welcome h2 { font-size:27px; } .sort-panel label { min-width:0; width:100%; } }
+@media print { .view-controls,.view-control-buttons,.table-filter-panel,.weekend-switch { display:none !important; } .proposal-calendar-scroll { overflow:visible; padding:0; } .proposal-calendar { min-width:0; grid-template-columns:52px repeat(var(--display-days),minmax(0,1fr)); } .proposal-event .session-card { padding:5px; font-size:9px; box-shadow:none; } .proposal-calendar .room-day-heading { position:static; font-size:9px; } .proposal-calendar .session-card { break-inside:avoid; } }

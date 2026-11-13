@@ -1,0 +1,71 @@
+/* Charcoal, turquoise, light gray and pink. Tints preserve readable status labels. */
+:root {
+  --pink: #FF2E63;
+  --surface: #EAEAEA;
+  --turquoise-tint: #e0fafa;
+  --pink-tint: #ffedf2;
+  --on-accent: #252A34;
+}
+body { color:var(--navy); background:var(--surface); }
+#sidebar { background:var(--navy); }
+nav a, .brand span, .sidebar-bottom a { color:var(--surface); }
+nav a.active, nav a:hover { background:#08D9D626; border-left-color:var(--pink); color:var(--surface); }
+button, .button, td, .department-row { color:var(--navy); }
+button:hover, .button:hover { background:var(--turquoise-tint); box-shadow:0 2px 5px #252A3414; }
+.primary, .button.primary, .welcome .primary {
+  background:var(--blue); border-color:var(--blue); color:var(--on-accent);
+}
+.primary:hover, .button.primary:hover, .welcome .primary:hover {
+  background:#60e6e4; border-color:var(--blue); color:var(--on-accent);
+}
+:focus-visible { outline:2px solid var(--navy); outline-offset:3px; }
+input:focus, select:focus, textarea:focus { border-color:var(--navy); }
+input[type=checkbox], input[type=range] { accent-color:var(--navy); }
+.tag, .avatar, .notice, .calendar button.available { background:var(--turquoise-tint); color:var(--navy); }
+.notice { border-left-color:var(--blue); }
+.welcome { background:var(--navy); }
+.welcome p, .welcome .eyebrow, .welcome-art span { color:var(--surface); }
+.welcome-art i, .welcome-art i:nth-child(5), .welcome-art i:nth-child(9), .proposal-notebook i.filled { background:var(--blue); }
+.proposal-notebook { border-color:#08D9D680; }
+.proposal-notebook b, .proposal-notebook > span { color:var(--surface); }
+.bar-track { background:var(--surface); }
+.bar-track span { background:var(--blue); }
+.quick-actions button, .type-chip, .spreadsheet-card, .soft .constraint-card { background:var(--surface); border-color:var(--border); }
+.type-chip:has(input:checked), .calendar button.preferred { background:var(--turquoise-tint); border-color:var(--blue); }
+.constraint-intro { background:linear-gradient(110deg,var(--turquoise-tint),var(--surface)); }
+.soft .constraint-card { border-top-color:var(--blue); }
+.hard .constraint-card, .spreadsheet-card { border-top-color:var(--pink); }
+.danger { color:var(--navy); background:var(--pink-tint); border-color:var(--pink); }
+.danger:hover { background:#ffd5df; border-color:var(--pink); }
+.issue-symbol, .issue-card.error .issue-symbol { background:var(--pink-tint); color:var(--navy); }
+.issue-card.error { border-left-color:var(--pink); }
+.session-card { background:var(--turquoise-tint); border-left-color:var(--blue); }
+.session-card.lab { background:var(--pink-tint); border-left-color:var(--pink); }
+.legend .lab-dot { background:var(--pink); }
+.heat-legend i { border-color:var(--border); }
+.heat-0 { background:var(--surface); color:var(--navy); }
+.heat-1 { background:var(--turquoise-tint); color:var(--navy); }
+.heat-2 { background:#9cefed; color:var(--navy); }
+.heat-3, .heat-cell.heat-3 { background:var(--blue); color:var(--on-accent); }
+.heat-4, .heat-cell.heat-4 { background:var(--navy); color:var(--surface); }
+.heat-cell:hover { background:var(--turquoise-tint); color:var(--navy); }
+.room-status.free { background:var(--turquoise-tint); border-color:var(--blue); }
+.room-status.conflict { background:var(--pink-tint); color:var(--navy); border-color:var(--pink); }
+.room-status.blocked { background:repeating-linear-gradient(135deg,#dcdde0,#dcdde0 4px,var(--surface) 4px,var(--surface) 8px); }
+.slot-room.conflict, .room-result.conflict > td:first-child { border-left-color:var(--pink); }
+.slot-room.free { border-left-color:var(--blue); }
+.slot-room:hover, .room-shortcuts > a:hover, .proposal-feature-links > a:hover { background:var(--turquoise-tint); }
+.calendar-corner, .room-day-heading, .proposal-calendar .room-day-heading { background:var(--turquoise-tint); border-color:var(--border); }
+.proposal-time-axis { background:var(--surface); }
+.room-event { background:var(--turquoise-tint); border-left-color:var(--blue); }
+.room-event.lab-event { background:var(--pink-tint); color:var(--navy); border-left-color:var(--pink); }
+.room-event.lab-event .event-time, .room-event.lab-event small { color:var(--navy); }
+.room-event.overlap-event { border-color:var(--pink); }
+.room-event:hover { box-shadow:0 3px 12px #252A3433; }
+.unavailable-block { background:repeating-linear-gradient(135deg,#dcdde0,#dcdde0 5px,var(--surface) 5px,var(--surface) 10px); }
+#view-filter-panel:not([hidden]), .sort-panel:not([hidden]), .course-schedule-hint { background:var(--turquoise-tint); border-color:var(--border); }
+.course-schedule-switch.is-on .switch-track { background:var(--blue); }
+.course-excluded td { background:var(--surface); }
+.data-table[data-key="courses"] th:last-child { background:var(--surface); }
+.proposal-feature-links span, .guide-number, .planning-stages li::before { color:var(--navy); }
+#toast { background:var(--navy); color:var(--surface); }

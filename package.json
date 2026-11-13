@@ -1,0 +1,14 @@
+{
+  "name": "defterdar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Defterdar · Sabancı University course, classroom, and exam scheduling workspace",
+  "scripts": {
+    "test": "node frontend/verify.cjs && node frontend/verify-proposal.cjs",
+    "verify": "node frontend/verify.cjs",
+    "verify:proposal": "node frontend/verify-proposal.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "^20.0.3"
+  }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Defterdar · Sabancı University Course Scheduling</title>
+  <meta name="description" content="Manage teaching schedules, midterms, finals, and classrooms for Sabancı University.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="occupancy.css">
+  <link rel="stylesheet" href="planning.css">
+  <link rel="stylesheet" href="proposal.css">
+  <link rel="stylesheet" href="palette.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside id="sidebar">
+    <a class="brand" href="#dashboard"><img src="defterdar.svg" alt=""><strong>Defterdar</strong><span>Sabancı University</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#dashboard">◈ <span>Overview</span></a>
+      <a href="#general">▦ <span>General</span></a>
+      <a href="#timetable">▦ <span>Timetable</span></a>
+      <a href="#exams">▣ <span>Exams</span></a>
+      <a href="#exam-allocation">◇ <span>Allocate rooms and times</span></a>
+      <a href="#occupancy">▦ <span>Room occupancy</span></a>
+      <a href="#instructors">♙ <span>Teaching staff</span></a>
+      <a href="#classrooms">▤ <span>Classrooms</span></a>
+      <a href="#courses">▣ <span>Courses</span></a>
+      <a href="#rules">☷ <span>Rules</span></a>
+      <a href="#issues">◉ <span>Schedule checks</span></a>
+      <a href="#planning">◇ <span>Schedule planning</span></a>
+      <a href="#feedback">✎ <span>Improvements and bugs</span></a>
+      <a href="#help">? <span>Guide</span></a>
+    </nav>
+    <div class="sidebar-bottom"><a href="#help">First time here? Open the guide →</a></div>
+  </aside>
+  <div id="workspace">
+    <header><div><strong>Sabancı University · Defterdar (#467)</strong><small>Course and classroom scheduling</small></div><div class="header-actions"><button id="undo" disabled>Undo</button><button id="spreadsheets-btn" class="primary" title="Import and export CSV files">Spreadsheets</button><button id="import">Import JSON</button><input id="import-file" type="file" accept=".json,application/json" hidden><button id="export">Export JSON</button><button id="reset">Restore default data</button><span class="avatar" title="Sabancı University">SU</span></div></header>
+    <main id="main" tabindex="-1"></main>
+    <footer>Defterdar · Sabancı University <span>Course and classroom scheduling</span></footer>
+  </div>
+  <dialog id="editor" aria-labelledby="dialog-title"><form id="edit-form"><div class="dialog-heading"><h2 id="dialog-title"></h2><button type="button" id="close-dialog" aria-label="Close">×</button></div><div id="fields" class="form-grid"></div><div class="dialog-actions"><button type="button" id="cancel">Cancel</button><button class="primary" type="submit">Save changes</button></div></form></dialog>
+  <dialog id="spreadsheet-dialog" aria-labelledby="spreadsheet-dialog-title"></dialog>
+  <div id="toast" role="status"></div>
+  <!-- Edit data.js to change the starting examples; app.js handles the interface. -->
+  <script src="data.js"></script>
+  <script src="catalog.js"></script>
+  <script src="sabanci.js"></script>
+  <script src="app.js"></script>
+  <script src="workspace.js"></script>
+  <script src="occupancy.js"></script>
+  <script src="staff.js"></script>
+  <script src="planning.js"></script>
+  <script src="schedule-review.js"></script>
+  <script src="spreadsheet-io.js"></script>
+  <script src="exams.js"></script>
+  <script src="proposal.js"></script>
+</body>
+</html>
