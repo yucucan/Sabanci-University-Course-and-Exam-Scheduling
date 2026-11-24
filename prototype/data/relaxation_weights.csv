@@ -1,0 +1,7 @@
+rule,weight,unit,description
+R3,1,per clashing hour,Academic block clash
+R5,1,per unavailable hour used,Instructor teaches in an unavailable hour
+R6,1,per session,Class in a common academic activity hour
+R7,1,per session,Faculty's fixed time request not kept
+R12,0.1,per missing seat (10 missing seats = 1),Room smaller than expected enrollment
+C5,1,per day,Two sessions of a section on the same day
